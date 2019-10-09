@@ -1,29 +1,12 @@
 node('master') {
-  stage('Prepare') {
-    parallel Checkout: {
-
-    }, 'Run Zalenium': {
-
-    }
+  def dockerTool = tool name: 'docker', type: 'org.jenkinsci.plugins.docker.commons.tools.DockerTool'
+  withEnv(["DOCKER=${dockerTool}/bin"]) {
+      //stages
+      //now we can simply call: dockerCmd 'run mycontainer'
+      dockerCmd 'run hello-world'
   }
+}
 
-  stage('Build') {
-
-  }
-
-  stage('Deploy') {
-
-  }
-
-  stage('Test') {
-
-  }
-
-  stage('Release') {
-
-  }
-
-  stage('Deploy @ Prod') {
-
-  }
+def dockerCmd(args) {
+    sh "sudo ${DOCKER}/docker ${args}"
 }
