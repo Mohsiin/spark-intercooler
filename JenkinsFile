@@ -1,0 +1,29 @@
+node('master') {
+  stage('Prepare') {
+    parallel Checkout: {
+
+    }, 'Run Zalenium': {
+
+    }
+  }
+
+  stage('Build') {
+
+  }
+
+  stage('Deploy') {
+
+  }
+
+  stage('Test') {
+
+  }
+
+  stage('Release') {
+
+  }
+
+  stage('Deploy @ Prod') {
+
+  }
+}
